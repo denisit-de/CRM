@@ -25,10 +25,18 @@
     <None Remove="Controllers\" />
     <None Remove="Data\" />
     <None Remove="Data\Models\" />
+    <None Remove="Authenticate\" />
+    <None Remove="Authenticate\Services\" />
+    <None Remove="DTOs\" />
+    <None Remove="DTOs\Account\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Controllers\" />
     <Folder Include="Data\" />
     <Folder Include="Data\Models\" />
+    <Folder Include="Authenticate\" />
+    <Folder Include="Authenticate\Services\" />
+    <Folder Include="DTOs\" />
+    <Folder Include="DTOs\Account\" />
   </ItemGroup>
 </Project>
