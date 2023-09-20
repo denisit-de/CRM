@@ -9,6 +9,7 @@ import { ValidationMessagesComponent } from './errors/validation-messages/valida
 import { NavbarComponent } from './navbar/navbar.component';
 import { FooterComponent } from './footer/footer.component';
 import { HomeComponent } from './home/home.component';
+import { MaterialModule } from './material/material.module';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { HomeComponent } from './home/home.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    MaterialModule
   ],
   providers: [],
   bootstrap: [AppComponent]
