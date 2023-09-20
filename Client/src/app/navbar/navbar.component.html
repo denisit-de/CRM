@@ -1,10 +1,13 @@
-<mat-toolbar>
-  <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
-    <mat-icon>menu</mat-icon>
-  </button>
-  <span class="ms-2">CRM</span>
-  <span class="spacer"></span>
-  <button mat-flat-button routerLink="account/register">Register</button>
-  <button mat-flat-button color="primary" class="ms-2" routerLink="account/login">Login</button>
-</mat-toolbar>
-
+<footer>
+  <mat-toolbar>
+    <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <span class="ms-2">
+      <a class="home" routerLink="/">CRM</a>
+    </span>
+    <span class="spacer"></span>
+    <button mat-flat-button routerLink="account/register">Register</button>
+    <button mat-flat-button color="primary" class="ms-2" routerLink="account/login">Login</button>
+  </mat-toolbar>
+</footer>
