@@ -1,0 +1,22 @@
+.body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 220px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+mat-form-field {
+  width: 100%;
+}
+
+.button {
+  line-height: 18px;
+  height: 55px;
+  width: 100%;
+}
