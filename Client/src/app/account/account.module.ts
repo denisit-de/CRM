@@ -6,6 +6,7 @@ import { AccountRoutingModule } from './account-routing.module';
 import { MaterialModule } from '../material/material.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { ErrorsModule } from '../errors/errors.module';
 
 
 
@@ -20,7 +21,8 @@ import { HttpClientModule } from '@angular/common/http';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    AccountRoutingModule
+    AccountRoutingModule,
+    ErrorsModule
   ]
 })
 export class AccountModule { }

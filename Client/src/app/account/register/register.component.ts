@@ -1,4 +1,3 @@
-import { Register } from './../../models/account/Register';
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AccountService } from '../account.service';
@@ -30,12 +29,21 @@ export class RegisterComponent {
   onSubmit(): void {
     this.accountService.register(this.form.value).subscribe({
       next: data => this.onRegister(data),
-      error: err => console.log(err)
+      error: err => this.onError(err)
     });
   }
 
   private onRegister(data: User) {
     console.log(data);
+  }
+
+  private onError(err: any): void {
+    if(err.errors) {
+      this.errorMessages = err.errors;
+    } else {
+      this.errorMessages = [];
+      this.errorMessages.push(err.error);
+    }
   }
 
 }
