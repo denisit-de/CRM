@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AccountService } from '../account.service';
 import { Session } from 'src/app/models/account/Session';
 import { Router } from '@angular/router';
+import { take } from 'rxjs';
 
 @Component({
   selector: 'app-login',
@@ -19,11 +20,20 @@ export class LoginComponent {
     private accountService: AccountService,
     private router: Router
     ) {
-    this.form = formBuilder.group({
-      username: ['', [Validators.required]],
-      password: ['', [Validators.required]]
-    });
-  }
+
+      this.accountService.loggedInUser$
+          .pipe(take(1))
+          .subscribe({
+            next: (user: Session | null) => {
+              if(user) router.navigate(['/']);
+            }
+          });
+
+      this.form = formBuilder.group({
+        username: ['', [Validators.required]],
+        password: ['', [Validators.required]]
+      });
+    }
 
   onSubmit(): void {
     this.accountService.login(this.form.value).subscribe({

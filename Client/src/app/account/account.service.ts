@@ -1,10 +1,10 @@
-import { HttpClient } from '@angular/common/http';
+import { Session } from 'src/app/models/account/Session';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Register } from '../models/account/Register';
 import { User } from '../models/account/User';
 import { Login } from '../models/account/Login';
-import { Session } from '../models/account/Session';
-import { ReplaySubject, map } from 'rxjs';
+import { ReplaySubject, map, of } from 'rxjs';
 import { Router } from '@angular/router';
 
 @Injectable({
@@ -28,9 +28,8 @@ export class AccountService {
 
   public login(user: Login) {
     var observable =  this.http.post<Session>(this.apiUrl + 'account/login', user)
-                      .pipe(map(user => user as Session));
-
-    observable.subscribe(data => this.setUser(data))
+                          .pipe(map(user => user as Session));
+    observable.subscribe(data => this.onLogin(data))
     return observable;
   }
 
@@ -42,9 +41,22 @@ export class AccountService {
     this.router.navigate(['/account/login']);
   }
 
-  private setUser(data: Session) {
-    localStorage.setItem('user', data.userName);
-    localStorage.setItem('session', data.token);
+  public getLoggedinUser() {
+    const userString = localStorage.getItem('session')
+    if(userString) {
+      const user: Session = JSON.parse(userString);
+      this.setLoggedInUser(user);
+    } else {
+      this.userSource.next(null);
+    }
+  }
+
+  private onLogin(data: Session): void {
+    localStorage.setItem('session', JSON.stringify(data));
+    this.setLoggedInUser(data);
+  }
+
+  private setLoggedInUser(data: Session): void {
     this.userSource.next(data);
   }
 }
