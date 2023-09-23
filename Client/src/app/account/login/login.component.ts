@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AccountService } from '../account.service';
-import { User } from 'src/app/models/account/User';
+import { Session } from 'src/app/models/account/Session';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -16,6 +17,7 @@ export class LoginComponent {
   constructor(
     private formBuilder: FormBuilder,
     private accountService: AccountService,
+    private router: Router
     ) {
     this.form = formBuilder.group({
       username: ['', [Validators.required]],
@@ -30,8 +32,9 @@ export class LoginComponent {
     });
   }
 
-  private onLogin(data: User): void {
+  private onLogin(data: Session): void {
     this.errorMessages = [];
+    this.router.navigate(['/']);
     console.log(data);
   }
 

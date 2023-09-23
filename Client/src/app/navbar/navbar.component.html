@@ -7,7 +7,15 @@
       <a class="home" routerLink="/">CRM</a>
     </span>
     <span class="spacer"></span>
-    <button mat-flat-button routerLink="account/register">Register</button>
-    <button mat-flat-button color="primary" class="ms-2" routerLink="account/login">Login</button>
+
+    <div *ngIf="!(accountService.loggedInUser$ | async)">
+      <button mat-flat-button routerLink="account/register">Register</button>
+      <button mat-flat-button color="primary" class="ms-2" routerLink="account/login">Login</button>
+    </div>
+
+    <div *ngIf="accountService.loggedInUser$ | async">
+      <button mat-flat-button color="warn" (click)="logout()">Logout</button>
+    </div>
+
   </mat-toolbar>
 </footer>

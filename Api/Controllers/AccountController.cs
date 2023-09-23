@@ -78,8 +78,7 @@ namespace Api.Controllers
         {
             return new UserDto
             {
-                FirstName = user.FirstName ?? "",
-                LastName = user.LastName ?? "",
+                UserName = user.UserName ?? "",
                 Token = _jwtService.CreateJWT(user)
             };
         }
