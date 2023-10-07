@@ -3,6 +3,10 @@ import { CommonModule } from '@angular/common';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { AccountRoutingModule } from './account-routing.module';
+import { MaterialModule } from '../material/material.module';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import { ErrorsModule } from '../errors/errors.module';
 
 
 
@@ -13,7 +17,12 @@ import { AccountRoutingModule } from './account-routing.module';
   ],
   imports: [
     CommonModule,
-    AccountRoutingModule
+    MaterialModule,
+    FormsModule,
+    ReactiveFormsModule,
+    HttpClientModule,
+    AccountRoutingModule,
+    ErrorsModule
   ]
 })
 export class AccountModule { }
